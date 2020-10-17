@@ -30,14 +30,16 @@ function setup() {
 	 rectangle1 = createSprite(400, 650, 200,20);
 	 rectangle2 = createSprite(300, 610,  20, 100);
 	 rectangle3 = createSprite(500, 610,  20, 100);
-	
+	rectangle1.shapeColor=("red");
+	rectangle2.shapeColor=("red");
+	rectangle3.shapeColor=("red");
 	engine = Engine.create();
 	world = engine.world;
 
 	World.add(world,rectangle1);
 	World.add(world,rectangle2);
 	World.add(world,rectangle3);
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:3, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -54,7 +56,6 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
-  
 if(keyPressed){
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
@@ -69,7 +70,8 @@ drawSprites();
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-	Matter.Body.setStatic(body, isStatic)
+	Matter.Body.setStatic(packageBody, false);
+
  
     
   }
